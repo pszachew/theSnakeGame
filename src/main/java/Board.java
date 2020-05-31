@@ -40,9 +40,10 @@ public class Board extends JPanel implements ActionListener
         curr_dots=3;
         for (int z = 0; z < curr_dots; z++)
         {
-            x[z] = 50 - z * 10;
-            y[z] = 50;
+            x[z] = 100 - z * 10;
+            y[z] = 100;
         }
+        setAppleLocation();
         timer = new Timer(DELAY, this);
         timer.start();
     }
@@ -51,6 +52,27 @@ public class Board extends JPanel implements ActionListener
     {
         appleXY[0]=((int)((Math.random()*RAND_POS)))*DOT_SIZE;
         appleXY[1]=((int)((Math.random()*RAND_POS)))*DOT_SIZE;
+    }
+
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        startDrawing(g);
+    }
+
+    private void startDrawing(Graphics g)
+    {
+        if (inGameFlag)
+        {
+            g.drawImage(apple,appleXY[0],appleXY[1],this);
+            for (int z=0; z<curr_dots; z++)
+            {
+                if (z==0) g.drawImage(head,x[z],y[z],this);
+                else g.drawImage(dot,x[z],y[z],this);
+            }
+
+        }
     }
 
     @Override
