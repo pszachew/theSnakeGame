@@ -28,13 +28,13 @@ public class Board extends JPanel implements ActionListener
         setFocusable(true);
         setPreferredSize(new Dimension(BOARD_WIDTH,BOARD_HEIGTH));
 
-        ImageIcon tmp1 = new ImageIcon(getClass().getResource("/images/dot.png"));
+        ImageIcon tmp1 = new ImageIcon(getClass().getResource("/dot.png"));
         dot = tmp1.getImage();
 
-        ImageIcon tmp2 = new ImageIcon(getClass().getResource("/images/apple1.png"));
+        ImageIcon tmp2 = new ImageIcon(getClass().getResource("/apple1.png"));
         apple = tmp2.getImage();
 
-        ImageIcon tmp3 = new ImageIcon(getClass().getResource("/images/head.png"));
+        ImageIcon tmp3 = new ImageIcon(getClass().getResource("/head.png"));
         head = tmp3.getImage();
 
         curr_dots=3;
