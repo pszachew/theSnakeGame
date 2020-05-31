@@ -1,7 +1,7 @@
 package game;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class The_snake extends JFrame
 {
@@ -14,6 +14,9 @@ public class The_snake extends JFrame
     {
 
         add(new game.Board());
+        ImageIcon img = new ImageIcon(getClass().getResource("/ikona.png"));
+        setIconImage(img.getImage());
+
 
         setResizable(false);
         pack();
