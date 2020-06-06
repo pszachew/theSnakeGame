@@ -79,7 +79,37 @@ public class Board extends JPanel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        if (inGameFlag)
+        {
+            if((x[0]==appleXY[0]) && (y[0])==appleXY[1])
+            {
+                curr_dots++;
+                setAppleLocation();
+            }
 
+            for (int z=curr_dots; z>0; z--)
+            {
+                if((z>4) && (x[0]==x[z]) && y[0]==y[z]) inGameFlag = false;
+            }
+            if(y[0]>=BOARD_HEIGTH) inGameFlag=false;
+            else if(y[0]<0) inGameFlag=false;
+            else if(x[0]>=BOARD_WIDTH) inGameFlag=false;
+            else if(x[0]<0) inGameFlag=false;
+
+            if(!inGameFlag) timer.stop();
+
+            for (int z = curr_dots; z > 0; z--)
+            {
+                x[z] = x[(z - 1)];
+                y[z] = y[(z - 1)];
+            }
+
+            if (direction[0]) x[0] -= DOT_SIZE;
+            if (direction[1])   x[0] += DOT_SIZE;
+            if (direction[2])  y[0] -= DOT_SIZE;
+            if (direction[3]) y[0] += DOT_SIZE;
+        }
+        repaint();
     }
 
     private class Tap extends KeyAdapter
