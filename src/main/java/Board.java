@@ -44,6 +44,7 @@ public class Board extends JPanel implements ActionListener
             y[z] = 100;
         }
         setAppleLocation();
+        addKeyListener(new Tap());
         timer = new Timer(DELAY, this);
         timer.start();
     }
@@ -78,6 +79,47 @@ public class Board extends JPanel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
+
+    }
+
+    private class Tap extends KeyAdapter
+    {
+        @Override
+        public void keyPressed(KeyEvent e)
+        {
+            int key = e.getKeyCode();
+
+            if ((key==KeyEvent.VK_RIGHT) && (!direction[0]))
+            {
+                direction[1]=true;
+                direction[2]=false;
+                direction[3]=false;
+            }
+
+            if ((key==KeyEvent.VK_LEFT) && (!direction[1]) )
+            {
+                direction[0]=true;
+                direction[2]=false;
+                direction[3]=false;
+            }
+
+            if ((key==KeyEvent.VK_UP) && (!direction[3]) )
+            {
+                direction[2]=true;
+                direction[0]=false;
+                direction[1]=false;
+            }
+
+            if ((key==KeyEvent.VK_DOWN) && (!direction[2]) )
+            {
+                direction[3]=true;
+                direction[0]=false;
+                direction[1]=false;
+            }
+
+        }
+
+
 
     }
 }
